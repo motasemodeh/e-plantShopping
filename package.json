@@ -1,6 +1,7 @@
 {
   "name": "shoppingcart",
   "private": true,
+  "homepage": "https://motasemodeh.github.io/e-plantShopping",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
