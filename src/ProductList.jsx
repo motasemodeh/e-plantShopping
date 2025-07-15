@@ -17,6 +17,14 @@ function ProductList({ onHomeClick }) {
     const calculateTotalQuantity = () => {
         return cartItems.reduce((total, item) => total + item.quantity, 0);
     };
+    
+    const handleAddToCart = (plant) => {
+        dispatch(addItem(plant)); // Dispatch the addItem action
+        setAddedToCart(prevState => ({
+            ...prevState,
+            [plant.name]: true
+        }));
+    };
 
     const plantsArray = [
         {
@@ -270,13 +278,7 @@ function ProductList({ onHomeClick }) {
         setShowCart(false);
     };
 
-    const handleAddToCart = (plant) => {
-        dispatch(addItem(plant)); // Dispatch the addItem action
-        setAddedToCart(prevState => ({
-            ...prevState,
-            [plant.name]: true
-        }));
-    };
+
     
     return (
          <div>
