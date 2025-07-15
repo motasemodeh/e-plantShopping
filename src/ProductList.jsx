@@ -319,22 +319,31 @@ function ProductList({ onHomeClick }) {
                                     const isInCart = cartItems.some(item => item.name === plant.name);
                                     return (
                                         <div className="product-card" key={plantIndex}>
-                                            <img 
-                                                className="product-image" 
-                                                src={plant.image}
-                                                alt={plant.name}
-                                            />
-                                            <div className="product-title">{plant.name}</div>
-                                            <div className="product-description">{plant.description}</div>
-                                            <div className="product-cost">{plant.cost}</div>
-                                            <button
-                                                className={`product-button ${isInCart ? 'added-to-cart' : ''}`}
-                                                onClick={() => handleAddToCart(plant)}
-                                                disabled={isInCart}
-                                            >
-                                                {isInCart ? 'Added to Cart' : 'Add to Cart'}
-                                            </button>
-                                        </div>
+										{" "}
+										{/* Unique key for each plant card */}
+										<img
+											className="product-image"
+											src={plant.image} // Display the plant image
+											alt={plant.name} // Alt text for accessibility
+										/>
+										<div className="product-title">{plant.name}</div> {/* Display plant name */}
+										{/* Display other plant details like description and cost */}
+										<div className="product-description">{plant.description}</div>{" "}
+										{/* Display plant description */}
+										<div className="product-cost">{plant.cost}</div> {/* Display plant cost */}
+										<button
+											className={`product-button ${addedToCart[plant.name] ? "disabled" : ""}`}
+											onClick={() => handleAddToCart(plant)}
+											disabled={addedToCart[plant.name]}
+											style={{
+												backgroundColor: addedToCart[plant.name] ? "#cccccc" : "#4CAF50",
+												cursor: addedToCart[plant.name] ? "not-allowed" : "pointer",
+												color: addedToCart[plant.name] ? "#666666" : "white",
+											}}
+										>
+											{addedToCart[plant.name] ? "Added to Cart" : "Add to Cart"}
+										</button>
+									</div>
                                     );
                                 })}
                             </div>
